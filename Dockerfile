@@ -7,9 +7,10 @@ RUN apk add wget \
     && chmod +x hugo \
     && mv hugo /usr/local/bin \
     && hugo new site blog \
-    && cd /blog/themes \
+    && mkdir -p /blog/themes/LoveIt \
+    && cd /blog/themes/LoveIt \
     && wget -O loveit.tar.gz "https://github.com/dillonzq/LoveIt/archive/refs/tags/v0.2.10.tar.gz" \
-    && tar -zxvf loveit.tar.gz
+    && tar -zxvf loveit.tar.gz 
 
 COPY . /blog
 
