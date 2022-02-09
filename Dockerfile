@@ -18,4 +18,6 @@ RUN cd /blog \
     && hugo -t LoveIt -D
 
 FROM nginx:1.21
+RUN rm -rf /usr/share/nginx/html \
+    && mkdir -p /usr/share/nginx/html
 COPY --from=build /blog/public/ /usr/share/nginx/html
