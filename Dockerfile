@@ -7,10 +7,10 @@ RUN apk add wget \
     && chmod +x hugo \
     && mv hugo /usr/local/bin \
     && hugo new site blog \
-    && mkdir -p /blog/themes/LoveIt \
-    && cd /blog/themes/LoveIt \
+    && cd /blog/themes \
     && wget -O loveit.tar.gz "https://github.com/dillonzq/LoveIt/archive/refs/tags/v0.2.10.tar.gz" \
-    && tar -zxvf loveit.tar.gz 
+    && tar -zxvf loveit.tar.gz \
+    && mv /blog/themes/LoveIt-0.2.10 /blog/themes/LoveIt
 
 COPY . /blog
 
@@ -18,6 +18,4 @@ RUN cd /blog \
     && hugo -t LoveIt -D
 
 FROM nginx:1.21
-RUN rm -rf /usr/share/nginx/html \
-    && mkdir -p /usr/share/nginx/html
 COPY --from=build /blog/public/ /usr/share/nginx/html
