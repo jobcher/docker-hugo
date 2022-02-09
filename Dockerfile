@@ -11,7 +11,7 @@ RUN apk add wget \
 COPY posts/ /blog/content/posts
 COPY static/ /blog/static
 COPY config.toml /blog/config.toml
-RUN cd /opt/blog/themes \
+RUN cd /blog/themes \
     && git clone https://github.com/dillonzq/LoveIt.git \
     && hugo -t LoveIt -D
 
