@@ -1,5 +1,5 @@
 pipeline {
-
+    agent none
     stages {
 
         stage('代码编译'){
