@@ -11,11 +11,3 @@ RUN apk add wget \
     && wget -O loveit.tar.gz "https://github.com/dillonzq/LoveIt/archive/refs/tags/v0.2.10.tar.gz" \
     && tar -zxvf loveit.tar.gz \
     && mv /blog/themes/LoveIt-0.2.10 /blog/themes/LoveIt
-
-COPY . /blog
-
-RUN cd /blog \
-    && hugo -t LoveIt -D
-
-FROM nginx:1.21
-COPY --from=build /blog/public/ /usr/share/nginx/html
